@@ -93,41 +93,30 @@ class ToolbarGestureHandler(
                 // Restrict the range of motion for the views so you can't start a swipe in one direction
                 // then move your finger far enough or in the other direction and make the content visually
                 // start sliding off screen.
-                tabPreview.translationX = when (gestureDirection) {
-                    GestureDirection.RIGHT_TO_LEFT -> min(
-                        windowWidth.toFloat() + previewOffset,
-                        tabPreview.translationX - distanceX
-                    ).coerceAtLeast(0f)
-                    GestureDirection.LEFT_TO_RIGHT -> max(
-                        -windowWidth.toFloat() - previewOffset,
-                        tabPreview.translationX - distanceX
-                    ).coerceAtMost(0f)
-                }
-                contentLayout.translationX = when (gestureDirection) {
-                    GestureDirection.RIGHT_TO_LEFT -> min(
-                        0f,
-                        contentLayout.translationX - distanceX
-                    ).coerceAtLeast(-windowWidth.toFloat() - previewOffset)
-                    GestureDirection.LEFT_TO_RIGHT -> max(
-                        0f,
-                        contentLayout.translationX - distanceX
-                    ).coerceAtMost(windowWidth.toFloat() + previewOffset)
-                }
+                val maxTabHidden = windowWidth.toFloat() + previewOffset
+                tabPreview.translationX = (tabPreview.translationX - distanceX).coerceIn(
+                        when (gestureDirection) {
+                            GestureDirection.RIGHT_TO_LEFT -> 0f .. maxTabHidden
+                            GestureDirection.LEFT_TO_RIGHT -> -maxTabHidden .. 0f
+                        }
+                )
+                contentLayout.translationX = (contentLayout.translationX - distanceX).coerceIn(
+                        when (gestureDirection) {
+                            GestureDirection.RIGHT_TO_LEFT -> -maxTabHidden .. 0f
+                            GestureDirection.LEFT_TO_RIGHT -> 0f .. maxTabHidden
+                    }
+                )
             }
             is Destination.None -> {
                 // If there is no "next" tab to swipe to in the gesture direction, only do a
                 // partial animation to show that we are at the end of the tab list
-                val maxContentHidden = contentLayout.width * OVERSCROLL_HIDE_PERCENT
-                contentLayout.translationX = when (gestureDirection) {
-                    GestureDirection.RIGHT_TO_LEFT -> max(
-                        -maxContentHidden.toFloat(),
-                        contentLayout.translationX - distanceX
-                    ).coerceAtMost(0f)
-                    GestureDirection.LEFT_TO_RIGHT -> min(
-                        maxContentHidden.toFloat(),
-                        contentLayout.translationX - distanceX
-                    ).coerceAtLeast(0f)
-                }
+                val maxContentHidden = (contentLayout.width * OVERSCROLL_HIDE_PERCENT).toFloat()
+                contentLayout.translationX = (contentLayout.translationX - distanceX).coerceIn(
+                        when (gestureDirection) {
+                            GestureDirection.RIGHT_TO_LEFT -> -maxContentHidden .. 0f
+                            GestureDirection.LEFT_TO_RIGHT -> 0f .. maxContentHidden
+                    }
+                )
             }
         }
     }
