@@ -13,6 +13,7 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkObject
+import io.mockk.spyk
 import io.mockk.unmockkObject
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -29,7 +30,7 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.components.metrics.Event
 import org.mozilla.fenix.components.metrics.MetricController
 import org.mozilla.fenix.components.metrics.MetricsUtils
-import org.mozilla.fenix.ext.navigateSafe
+import org.mozilla.fenix.search.AlertDialogBuilder
 import org.mozilla.fenix.search.SearchFragmentAction
 import org.mozilla.fenix.settings.SupportUtils
 import org.mozilla.fenix.utils.Settings
@@ -45,6 +46,7 @@ class SearchDialogControllerTest {
     @MockK(relaxed = true) private lateinit var settings: Settings
     @MockK private lateinit var sessionManager: SessionManager
     @MockK(relaxed = true) private lateinit var clearToolbarFocus: () -> Unit
+    @MockK(relaxed = true) private lateinit var dismissDialog: () -> Unit
 
     private lateinit var controller: SearchDialogController
 
@@ -56,6 +58,9 @@ class SearchDialogControllerTest {
         every { store.state.tabId } returns "test-tab-id"
         every { store.state.searchEngineSource.searchEngine } returns searchEngine
         every { sessionManager.select(any()) } just Runs
+        every { navController.currentDestination } returns mockk {
+            every { id } returns R.id.searchDialogFragment
+        }
         every { MetricsUtils.createSearchEvent(searchEngine, activity, any()) } returns null
 
         controller = SearchDialogController(
@@ -65,6 +70,7 @@ class SearchDialogControllerTest {
             navController = navController,
             settings = settings,
             metrics = metrics,
+            dismissDialog = dismissDialog,
             clearToolbarFocus = clearToolbarFocus
         )
     }
@@ -89,6 +95,17 @@ class SearchDialogControllerTest {
             )
         }
         verify { metrics.track(Event.EnteredUrl(false)) }
+    }
+
+    @Test
+    fun handleBlankUrlCommitted() {
+        val url = ""
+
+        controller.handleUrlCommitted(url)
+
+        verify {
+            dismissDialog()
+        }
     }
 
     @Test
@@ -118,6 +135,16 @@ class SearchDialogControllerTest {
         verify {
             activity.startActivity(any())
         }
+    }
+
+    @Test
+    fun handleAddonsUrlCommitted() {
+        val url = "about:addons"
+        val directions = SearchDialogFragmentDirections.actionGlobalAddonsManagementFragment()
+
+        controller.handleUrlCommitted(url)
+
+        verify { navController.navigate(directions) }
     }
 
     @Test
@@ -266,7 +293,7 @@ class SearchDialogControllerTest {
 
         controller.handleClickSearchEngineSettings()
 
-        verify { navController.navigateSafe(R.id.searchEngineFragment, directions) }
+        verify { navController.navigate(directions) }
     }
 
     @Test
@@ -316,5 +343,17 @@ class SearchDialogControllerTest {
 
         verify { sessionManager.select(any()) }
         verify { activity.openToBrowser(from = BrowserDirection.FromSearchDialog) }
+    }
+
+    @Test
+    fun `show camera permissions needed dialog`() {
+        val dialogBuilder: AlertDialogBuilder = mockk(relaxed = true)
+
+        val spyController = spyk(controller)
+        every { spyController.buildDialog() } returns dialogBuilder
+
+        spyController.handleCameraPermissionsNeeded()
+
+        verify { dialogBuilder.show() }
     }
 }

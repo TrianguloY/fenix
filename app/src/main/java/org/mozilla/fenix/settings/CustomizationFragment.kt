@@ -9,7 +9,10 @@ import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
+import org.mozilla.fenix.FeatureFlags
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.metrics.Event
 import org.mozilla.fenix.components.toolbar.ToolbarPosition
@@ -47,6 +50,8 @@ class CustomizationFragment : PreferenceFragmentCompat() {
         bindAutoBatteryTheme()
         setupRadioGroups()
         setupToolbarCategory()
+        setupHomeCategory()
+        setupGesturesCategory()
     }
 
     private fun setupRadioGroups() {
@@ -128,5 +133,32 @@ class CustomizationFragment : PreferenceFragmentCompat() {
         bottomPreference.setCheckedWithoutClickListener(toolbarPosition == ToolbarPosition.BOTTOM)
 
         addToRadioGroup(topPreference, bottomPreference)
+    }
+
+    private fun setupHomeCategory() {
+        requirePreference<PreferenceCategory>(R.string.pref_home_category).apply {
+            isVisible = FeatureFlags.topFrecentSite
+        }
+        requirePreference<SwitchPreference>(R.string.pref_key_enable_top_frecent_sites).apply {
+            isVisible = FeatureFlags.topFrecentSite
+            isChecked = context.settings().showTopFrecentSites
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
+    }
+
+    private fun setupGesturesCategory() {
+        requirePreference<SwitchPreference>(R.string.pref_key_website_pull_to_refresh).apply {
+            isVisible = FeatureFlags.pullToRefreshEnabled
+            isChecked = context.settings().isPullToRefreshEnabledInBrowser
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
+        requirePreference<SwitchPreference>(R.string.pref_key_dynamic_toolbar).apply {
+            isChecked = context.settings().isDynamicToolbarEnabled
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
+        requirePreference<SwitchPreference>(R.string.pref_key_swipe_toolbar_switch_tabs).apply {
+            isChecked = context.settings().isSwipeToolbarToSwitchTabsEnabled
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
     }
 }

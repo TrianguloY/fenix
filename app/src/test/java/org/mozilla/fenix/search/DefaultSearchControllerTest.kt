@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.search
 
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import io.mockk.MockKAnnotations
@@ -13,6 +14,7 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkObject
+import io.mockk.spyk
 import io.mockk.unmockkObject
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -29,9 +31,10 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.components.metrics.Event
 import org.mozilla.fenix.components.metrics.MetricController
 import org.mozilla.fenix.components.metrics.MetricsUtils
-import org.mozilla.fenix.ext.navigateSafe
 import org.mozilla.fenix.settings.SupportUtils
 import org.mozilla.fenix.utils.Settings
+
+typealias AlertDialogBuilder = AlertDialog.Builder
 
 @ExperimentalCoroutinesApi
 class DefaultSearchControllerTest {
@@ -55,8 +58,10 @@ class DefaultSearchControllerTest {
         every { store.state.tabId } returns "test-tab-id"
         every { store.state.searchEngineSource.searchEngine } returns searchEngine
         every { sessionManager.select(any()) } just Runs
+        every { navController.currentDestination } returns mockk {
+            every { id } returns R.id.searchFragment
+        }
         every { MetricsUtils.createSearchEvent(searchEngine, activity, any()) } returns null
-
         controller = DefaultSearchController(
             activity = activity,
             sessionManager = sessionManager,
@@ -117,6 +122,16 @@ class DefaultSearchControllerTest {
         verify {
             activity.startActivity(any())
         }
+    }
+
+    @Test
+    fun handleAddonsUrlCommitted() {
+        val url = "about:addons"
+        val directions = SearchFragmentDirections.actionGlobalAddonsManagementFragment()
+
+        controller.handleUrlCommitted(url)
+
+        verify { navController.navigate(directions) }
     }
 
     @Test
@@ -265,7 +280,7 @@ class DefaultSearchControllerTest {
 
         controller.handleClickSearchEngineSettings()
 
-        verify { navController.navigateSafe(R.id.searchEngineFragment, directions) }
+        verify { navController.navigate(directions) }
     }
 
     @Test
@@ -315,5 +330,17 @@ class DefaultSearchControllerTest {
 
         verify { sessionManager.select(any()) }
         verify { activity.openToBrowser(from = BrowserDirection.FromSearch) }
+    }
+
+    @Test
+    fun `show camera permissions needed dialog`() {
+        val dialogBuilder: AlertDialogBuilder = mockk(relaxed = true)
+
+        val spyController = spyk(controller)
+        every { spyController.buildDialog() } returns dialogBuilder
+
+        spyController.handleCameraPermissionsNeeded()
+
+        verify { dialogBuilder.show() }
     }
 }

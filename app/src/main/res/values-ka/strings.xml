@@ -77,6 +77,28 @@
     <!-- Text for the negative button -->
     <string name="search_widget_cfr_neg_button_text">ახლა არა</string>
 
+    <!-- Open in App "contextual feature recommendation" (CFR) -->
+    <!-- Text for the info message. 'Firefox' intentionally hardcoded here.-->
+    <string name="open_in_app_cfr_info_message">თუ მიუთითებთ, Firefox თავადვე გახსნის ბმულებს სხვა აპებში.</string>
+    <!-- Text for the positive action button -->
+    <string name="open_in_app_cfr_positive_button_text">პარამეტრებზე გადასვლა</string>
+    <!-- Text for the negative action button -->
+    <string name="open_in_app_cfr_negative_button_text">გამოტოვება</string>
+
+    <!-- Text for the info dialog when camera permissions have been denied but user tries to access a camera feature. -->
+    <string name="camera_permissions_needed_message">კამერასთან წვდომაა საჭირო. გადადით Android-პარამეტრებში, შეეხეთ ნებართვებს და შემდეგ დაშვებას.</string>
+    <!-- Text for the positive action button to go to Android Settings to grant permissions. -->
+    <string name="camera_permissions_needed_positive_button_text">პარამეტრებზე გადასვლა</string>
+    <!-- Text for the negative action button to dismiss the dialog. -->
+    <string name="camera_permissions_needed_negative_button_text">გამოტოვება</string>
+
+    <!-- Text for the banner message to tell users about our auto close feature. -->
+    <string name="tab_tray_close_tabs_banner_message">მიუთითეთ, დაიხუროს გახსნილი ჩანართები, რომლებიც არ მოგინახულებიათ წინა დღეს, წინა კვირას ან წინა თვეს.</string>
+    <!-- Text for the positive action button to go to Settings for auto close tabs. -->
+    <string name="tab_tray_close_tabs_banner_positive_button_text">პარამეტრების გახსნა</string>
+    <!-- Text for the negative action button to dismiss the Close Tabs Banner. -->
+    <string name="tab_tray_close_tabs_banner_negative_button_text">გამოტოვება</string>
+
     <!-- Home screen icons - Long press shortcuts -->
     <!-- Shortcut action to open new tab -->
     <string name="home_screen_shortcut_open_new_tab_2">ახალი ჩანართი</string>
@@ -244,6 +266,8 @@
     <string name="preferences_open_links_in_a_private_tab">ბმულის პირად ჩანართში გახსნა</string>
     <!-- Preference for allowing screenshots to be taken while in a private tab-->
     <string name="preferences_allow_screenshots_in_private_mode">ეკრანის გადაღების დაშვება პირადი თვალიერებისას</string>
+    <!-- Will inform the user of the risk of activating Allow screenshots in private browsing option -->
+    <string name="preferences_screenshots_in_private_mode_disclaimer">დაშვების შემთხვევაში, პირადი ჩანართები ხილული იქნება რამდენიმე აპის გახსნის დროსაც</string>
     <!-- Preference for adding private browsing shortcut -->
     <string name="preferences_add_private_browsing_shortcut">პირადი თვალიერების მალსახმობის დამატება</string>
     <!-- Preference for accessibility -->
@@ -262,6 +286,10 @@
     <string name="preferences_toolbar">ხელსაწყოთა ზოლი</string>
     <!-- Preference for changing default theme to dark or light mode -->
     <string name="preferences_theme">თემა</string>
+    <!-- Preference for customizing the home screen -->
+    <string name="preferences_home">მთავარი</string>
+    <!-- Preference for gestures based actions -->
+    <string name="preferences_gestures">ჟესტები</string>
     <!-- Preference for settings related to visual options -->
     <string name="preferences_customize">მორგება</string>
     <!-- Preference description for banner about signing in -->
@@ -299,12 +327,17 @@
     <string name="preferences_search_bookmarks">სანიშნების ძიება</string>
     <!-- Preference for account settings -->
     <string name="preferences_account_settings">ანგარიშის პარამეტრები</string>
+    <!-- Preference for enabling url autocomplete-->
+    <string name="preferences_enable_autocomplete_urls">ბმულების თვითდასრულება</string>
     <!-- Preference for open links in third party apps -->
     <string name="preferences_open_links_in_apps">ბმულების გახსნა პროგრამებში</string>
     <!-- Preference for open download with an external download manager app -->
     <string name="preferences_external_download_manager">ჩამოტვირთვის გარეშე მმართველი</string>
     <!-- Preference for add_ons -->
     <string name="preferences_addons">დამატებები</string>
+
+    <!-- Preference for notifications -->
+    <string name="preferences_notifications">შეტყობინებები</string>
 
     <!-- Account Preferences -->
     <!-- Preference for triggering sync -->
@@ -433,6 +466,17 @@
     <!-- Preference for using following device theme -->
     <string name="preference_follow_device_theme">მოწყობილობის თემის მიხედვით</string>
 
+    <!-- Gestures Preferences-->
+    <!-- Preferences for using pull to refresh in a webpage -->
+    <string name="preference_gestures_website_pull_to_refresh">ჩამოწიეთ გასაახლებლად</string>
+    <!-- Preference for using the dynamic toolbar -->
+    <string name="preference_gestures_dynamic_toolbar">გადაადგილდით ხელსაწყოების დასამალად</string>
+
+    <!-- Preference for switching tabs by swiping horizontally on the toolbar -->
+    <string name="preference_gestures_swipe_toolbar_switch_tabs">გაუსვით ხელსაწყოთა ზოლის გვერდებზე, ჩანართებზე გადასართველად</string>
+    <!-- Preference for showing the opened tabs by swiping up on the toolbar-->
+    <string name="preference_gestures_swipe_toolbar_show_tabs">აუსვით ხელსაწყოთა ზოლზე ჩანართების გახსნისთვის</string>
+
     <!-- Library -->
     <!-- Option in Library to open Sessions page -->
     <string name="library_sessions">სეანსები</string>
@@ -465,6 +509,32 @@
     <!-- Content description (not visible, for screen readers etc.): "Close button for library settings" -->
     <string name="content_description_close_button">დახურვა</string>
 
+    <!-- Option in library for Recently Closed Tabs -->
+    <string name="library_recently_closed_tabs">ბოლოს დახურული ჩანართები</string>
+    <!-- Option in library to open Recently Closed Tabs page -->
+    <string name="recently_closed_show_full_history">სრული ისტორიის ჩვენება</string>
+    <!-- Text to show users they have multiple tabs saved in the Recently Closed Tabs section of history.
+    %d is a placeholder for the number of tabs selected. -->
+    <string name="recently_closed_tabs">%d ჩანართი</string>
+    <!-- Text to show users they have one tab saved in the Recently Closed Tabs section of history.
+    %d is a placeholder for the number of tabs selected. -->
+    <string name="recently_closed_tab">%d ჩანართი</string>
+    <!-- Recently closed tabs screen message when there are no recently closed tabs -->
+    <string name="recently_closed_empty_message">ბოლოს დახურული ჩანართები არაა</string>
+
+    <!-- Tab Management -->
+    <!-- Title of preference that allows a user to auto close tabs after a specified amount of time -->
+    <string name="preferences_close_tabs">ჩანართების დახურვა</string>
+    <!-- Option for auto closing tabs that will never auto close tabs, always allows user to manually close tabs -->
+    <string name="close_tabs_manually">ხელით</string>
+    <!-- Option for auto closing tabs that will auto close tabs after one day -->
+    <string name="close_tabs_after_one_day">ერთი დღის შემდეგ</string>
+    <!-- Option for auto closing tabs that will auto close tabs after one week -->
+    <string name="close_tabs_after_one_week">ერთი კვირის შემდეგ</string>
+
+    <!-- Option for auto closing tabs that will auto close tabs after one month -->
+    <string name="close_tabs_after_one_month">ერთი თვის შემდეგ</string>
+
     <!-- Sessions -->
     <!-- Title for the list of tabs -->
     <string name="tab_header_label">გახსნილი ჩანართები</string>
@@ -484,6 +554,10 @@
     <string name="tab_tray_menu_item_save">კრებულში შენახვა</string>
     <!-- Text shown in the menu for sharing all tabs -->
     <string name="tab_tray_menu_item_share">ყველა ჩანართის გაზიარება</string>
+    <!-- Text shown in the menu to view recently closed tabs -->
+    <string name="tab_tray_menu_recently_closed">ბოლოს დახურული ჩანართები</string>
+    <!-- Text shown in the menu to view tab settings -->
+    <string name="tab_tray_menu_tab_settings">ჩანართის პარამეტრები</string>
     <!-- Text shown in the menu for closing all tabs -->
     <string name="tab_tray_menu_item_close">ყველა ჩანართის დახურვა</string>
     <!-- Shortcut action to open new tab -->
@@ -529,6 +603,8 @@
     <!-- Text for the menu button to remove a top site -->
     <string name="remove_top_site">მოცილება</string>
 
+    <!-- Text for the menu button to delete a top site from history -->
+    <string name="delete_from_history">ისტორიიდან ამოშლა</string>
     <!-- Postfix for private WebApp titles, placeholder is replaced with app name -->
     <string name="pwa_site_controls_title_private">%1$s (პირადი რეჟიმი)</string>
 
@@ -573,6 +649,13 @@
     <string name="history_older">უფრო ძველი</string>
     <!-- Text shown when no history exists -->
     <string name="history_empty_message">ისტორია არ არის</string>
+
+    <!-- Downloads -->
+    <!-- Text shown when no download exists -->
+    <string name="download_empty_message">ჩამოტვირთვები არაა</string>
+    <!-- History multi select title in app bar
+    The first parameter is the number of downloads selected -->
+    <string name="download_multi_select_title">შერჩეულია %1$d</string>
 
     <!-- Crashes -->
     <!-- Title text displayed on the tab crash page. This first parameter is the name of the application (For example: Fenix) -->
@@ -729,10 +812,8 @@
     <string name="collections_header">კრებულები</string>
     <!-- Content description (not visible, for screen readers etc.): Opens the collection menu when pressed -->
     <string name="collection_menu_button_content_description">კრებულის მენიუ</string>
-    <!-- No Open Tabs Message Header -->
-    <string name="no_collections_header1">შეაგროვეთ, რაც თქვენთვის მნიშვნელოვანია</string>
     <!-- Label to describe what collections are to a new user without any collections -->
-    <string name="no_collections_description1">თავი მოუყარეთ მოძიებულ მასალებს, საიტებს, ჩანართებს, სწრაფი წვდომისთვის.</string>
+    <string name="no_collections_description2">შეაგროვეთ, რაც თქვენთვის ღირებულია.\nთავი მოუყარეთ მოძიებულ მასალებს, საიტებს და ჩანართებს, მომავალში სწრაფი წვდომისთვის.</string>
     <!-- Title for the "select tabs" step of the collection creator -->
     <string name="create_collection_select_tabs">ჩანართების შერჩევა</string>
     <!-- Title for the "select collection" step of the collection creator -->
@@ -979,13 +1060,14 @@
     <string name="onboarding_whats_new_description">გაინტერესებთ როგორ შეიცვალა %s გარეგნულად? გსურთ გაეცნოთ ცვლილებებს?</string>
     <!-- text for underlined clickable link that is part of "what's new" onboarding card description that links to an FAQ -->
     <string name="onboarding_whats_new_description_linktext">მიიღეთ პასუხები აქ</string>
-    <!-- text for the firefox account onboarding card header
-    The first parameter is the name of the app (e.g. Firefox Preview) -->
-    <string name="onboarding_firefox_account_header">სრულყოფილად გამოიყენეთ %s.</string>
+    <!-- text for the Firefox account onboarding sign in card header -->
+    <string name="onboarding_account_sign_in_header">დაიწყეთ დასინქრონება სანიშნების, პაროლებისა და სხვა მონაცემების, თქვენი Firefox-ანგარიშის მეშვეობით.</string>
+    <!-- Text for the button to learn more about signing in to your Firefox account -->
+    <string name="onboarding_manual_sign_in_learn_more">ვრცლად</string>
     <!-- text for the firefox account onboarding card header when we detect you're already signed in to
         another Firefox browser. (The word `Firefox` should not be translated)
         The first parameter is the email of the detected user's account -->
-    <string name="onboarding_firefox_account_auto_signin_header_2">თქვენ შესული ხართ, როგორც %s სხვა Firefox-ბრაუზერზე ამ ტელეფონში. გსურთ ამ ანგარიშით შესვლა?</string>
+    <string name="onboarding_firefox_account_auto_signin_header_3">თქვენ შესული ხართ, როგორც %s სხვა Firefox-ბრაუზერზე ამ მოწყობილობაზე. გსურთ ამ ანგარიშით შესვლა?</string>
     <!-- text for the button to confirm automatic sign-in -->
     <string name="onboarding_firefox_account_auto_signin_confirm">დიახ, შევალ</string>
     <!-- text for the automatic sign-in button while signing in is in process -->
@@ -1232,7 +1314,7 @@
     <string name="add_to_homescreen_text_placeholder">მალსახმობის სახელი</string>
 
     <!-- Describes the add to homescreen functionality -->
-    <string name="add_to_homescreen_description">მარტივად შეგიძლიათ დაამატოთ ეს საიტი ტელეფონის მთავარ ეკრანზე, სწრაფად წვდომისა და გახნისთვის, პროგრამის მსგავსად.</string>
+    <string name="add_to_homescreen_description_2">მარტივად შეგიძლიათ დაამატოთ ეს საიტი მოწყობილობის მთავარ ეკრანზე, სწრაფად წვდომისა და გახნისთვის, პროგრამის მსგავსად.</string>
 
     <!-- Preference for managing the settings for logins and passwords in Fenix -->
     <string name="preferences_passwords_logins_and_passwords">ანგარიშები და პაროლები</string>
@@ -1304,8 +1386,12 @@
 
     <!-- Content Description (for screenreaders etc) read for the button to copy a password in logins-->
     <string name="saved_logins_copy_password">პაროლის ასლი</string>
+    <!-- Content Description (for screenreaders etc) read for the button to clear a password while editing a login-->
+    <string name="saved_logins_clear_password">პაროლის გასუფთავება</string>
     <!-- Content Description (for screenreaders etc) read for the button to copy a username in logins -->
     <string name="saved_login_copy_username">მომხმარებლის ასლი</string>
+    <!-- Content Description (for screenreaders etc) read for the button to clear a username while editing a login -->
+    <string name="saved_login_clear_username">სახელის გასუფთავება</string>
     <!-- Content Description (for screenreaders etc) read for the button to copy a site in logins -->
     <string name="saved_login_copy_site">საიტის ასლი</string>
     <!-- Content Description (for screenreaders etc) read for the button to open a site in logins -->
@@ -1461,7 +1547,7 @@
     <string name="saved_login_duplicate">ანგარიში ამ სახელით უკვე არსებობს</string>
 
     <!-- Synced Tabs -->
-   <!-- Text displayed to ask user to connect another device as no devices found with account -->
+    <!-- Text displayed to ask user to connect another device as no devices found with account -->
     <string name="synced_tabs_connect_another_device">სხვა მოწყობილობის დაკავშირება</string>
     <!-- Text displayed asking user to re-authenticate -->
     <string name="synced_tabs_reauth">გთხოვთ, ხელახლა შეხვიდეთ.</string>
@@ -1475,12 +1561,34 @@
     <!-- Text displayed on a button in the synced tabs screen to link users to sign in when a user is not signed in to Firefox Sync -->
     <string name="synced_tabs_sign_in_button">სინქრონიზაციაში შესვლა</string>
 
+    <!-- The text displayed when a synced device has no tabs to show in the list of Synced Tabs. -->
+    <string name="synced_tabs_no_open_tabs">გახსნილი ჩანართები არაა</string>
+
     <!-- Top Sites -->
     <!-- Title text displayed in the dialog when top sites limit is reached. -->
     <string name="top_sites_max_limit_title">რჩეული საიტების ზღვარი მიღწეულია</string>
     <!-- Content description text displayed in the dialog when top sites limit is reached. -->
-    <string name="top_sites_max_limit_content">ახალი რჩეული საიტის დასამატებლად, წაშალეთ წინა. მასზე დიდხანს დაჭერით და მოცილებით.</string>
+    <string name="top_sites_max_limit_content_2">ახალი რჩეული საიტის დასამატებლად, წაშალეთ წინა. მასზე დიდხანს შეხებით და მოცილებით.</string>
     <!-- Confirmation dialog button text when top sites limit is reached. -->
     <string name="top_sites_max_limit_confirmation_button">კარგი, გასაგებია</string>
+
+    <!-- Label for the show most visited sites preference -->
+    <string name="top_sites_toggle_top_frecent_sites">ხშირად მონახულებულების ჩვენება</string>
+
+    <!-- Content description for close button in collection placeholder. -->
+    <string name="remove_home_collection_placeholder_content_description">მოცილება</string>
+
+    <!-- Deprecated: text for the firefox account onboarding card header
+    The first parameter is the name of the app (e.g. Firefox Preview) -->
+    <string name="onboarding_firefox_account_header">სრულყოფილად გამოიყენეთ %s.</string>
+
+    <!-- Deprecated: No Open Tabs Message Header -->
+    <string name="no_collections_header1">შეაგროვეთ, რაც თქვენთვის ღირებულია</string>
+    <!-- Deprecated: Label to describe what collections are to a new user without any collections -->
+    <string name="no_collections_description1">თავი მოუყარეთ მოძიებულ მასალებს, საიტებს, ჩანართებს, სწრაფი წვდომისთვის.</string>
+    <!-- Deprecated: text for the firefox account onboarding card header when we detect you're already signed in to -->
+    <string name="onboarding_firefox_account_auto_signin_header_2">თქვენ შესული ხართ, როგორც %s სხვა Firefox-ბრაუზერზე ამ ტელეფონში. გსურთ ამ ანგარიშით შესვლა?</string>
+    <!-- Deprecated: Describes the add to homescreen functionality -->
+    <string name="add_to_homescreen_description">მარტივად შეგიძლიათ დაამატოთ ეს საიტი ტელეფონის მთავარ ეკრანზე, სწრაფად წვდომისა და გახნისთვის, პროგრამის მსგავსად.</string>
 
     </resources>

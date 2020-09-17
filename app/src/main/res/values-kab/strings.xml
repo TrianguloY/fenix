@@ -82,6 +82,28 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <!-- Text for the negative button -->
     <string name="search_widget_cfr_neg_button_text">Mačči tura</string>
 
+    <!-- Open in App "contextual feature recommendation" (CFR) -->
+    <!-- Text for the info message. 'Firefox' intentionally hardcoded here.-->
+    <string name="open_in_app_cfr_info_message">Tzemreḍ ad tesbaduḍ akken ad yeldi iseɣwan s wudem awurman deg isnasen.</string>
+    <!-- Text for the positive action button -->
+    <string name="open_in_app_cfr_positive_button_text">Ddu ɣer iɣewwaṛen</string>
+    <!-- Text for the negative action button -->
+    <string name="open_in_app_cfr_negative_button_text">Zgel</string>
+
+    <!-- Text for the info dialog when camera permissions have been denied but user tries to access a camera feature. -->
+    <string name="camera_permissions_needed_message">Isɛa anekcum ɣer tkamiṛat. Ddu ɣer iɣewwaṛen Android, sit ɣef tisirag, sakin senned sireg.</string>
+    <!-- Text for the positive action button to go to Android Settings to grant permissions. -->
+    <string name="camera_permissions_needed_positive_button_text">Ddu ɣer iɣewwaṛen</string>
+    <!-- Text for the negative action button to dismiss the dialog. -->
+    <string name="camera_permissions_needed_negative_button_text">Zgel</string>
+
+    <!-- Text for the banner message to tell users about our auto close feature. -->
+    <string name="tab_tray_close_tabs_banner_message">Sbadu amdel awurman n icarren yeldin ur twalaḍ ara deg ussan, imalasen, agguren ineggura.</string>
+    <!-- Text for the positive action button to go to Settings for auto close tabs. -->
+    <string name="tab_tray_close_tabs_banner_positive_button_text">Wali iɣewwaṛen</string>
+    <!-- Text for the negative action button to dismiss the Close Tabs Banner. -->
+    <string name="tab_tray_close_tabs_banner_negative_button_text">Zgel</string>
+
     <!-- Home screen icons - Long press shortcuts -->
     <!-- Shortcut action to open new tab -->
     <string name="home_screen_shortcut_open_new_tab_2">Iccer amaynut</string>
@@ -266,6 +288,8 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <string name="preferences_toolbar">Afeggag n yifecka</string>
     <!-- Preference for changing default theme to dark or light mode -->
     <string name="preferences_theme">Asentel</string>
+    <!-- Preference for customizing the home screen -->
+    <string name="preferences_home">Asebter agejdan</string>
     <!-- Preference for settings related to visual options -->
     <string name="preferences_customize">Sagen</string>
     <!-- Preference description for banner about signing in -->
@@ -475,6 +499,31 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <!-- Content description (not visible, for screen readers etc.): "Close button for library settings" -->
     <string name="content_description_close_button">Mdel</string>
 
+    <!-- Option in library for Recently Closed Tabs -->
+    <string name="library_recently_closed_tabs">Iccaren imedlen melmi kan</string>
+    <!-- Option in library to open Recently Closed Tabs page -->
+    <string name="recently_closed_show_full_history">Sken amazray meṛṛa</string>
+    <!-- Text to show users they have multiple tabs saved in the Recently Closed Tabs section of history.
+    %d is a placeholder for the number of tabs selected. -->
+    <string name="recently_closed_tabs">%d n yiccaren</string>
+    <!-- Text to show users they have one tab saved in the Recently Closed Tabs section of history.
+    %d is a placeholder for the number of tabs selected. -->
+    <string name="recently_closed_tab">%d n yiccer</string>
+    <!-- Recently closed tabs screen message when there are no recently closed tabs -->
+    <string name="recently_closed_empty_message">Ulac iccaren imedlen melmi kan</string>
+
+    <!-- Tab Management -->
+    <!-- Title of preference that allows a user to auto close tabs after a specified amount of time -->
+    <string name="preferences_close_tabs">Mdel iccaren</string>
+    <!-- Option for auto closing tabs that will never auto close tabs, always allows user to manually close tabs -->
+    <string name="close_tabs_manually">S ufus</string>
+    <!-- Option for auto closing tabs that will auto close tabs after one day -->
+    <string name="close_tabs_after_one_day">Seld yiwen n wass</string>
+    <!-- Option for auto closing tabs that will auto close tabs after one week -->
+    <string name="close_tabs_after_one_week">Seld yiwen n umalas</string>
+    <!-- Option for auto closing tabs that will auto close tabs after one month -->
+    <string name="close_tabs_after_one_month">Seld yiwen n waggur</string>
+
     <!-- Sessions -->
     <!-- Title for the list of tabs -->
     <string name="tab_header_label">Iccaren yeldin</string>
@@ -494,6 +543,10 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <string name="tab_tray_menu_item_save">Sekles ɣer tagrumma</string>
     <!-- Text shown in the menu for sharing all tabs -->
     <string name="tab_tray_menu_item_share">Bḍu akk accaren</string>
+    <!-- Text shown in the menu to view recently closed tabs -->
+    <string name="tab_tray_menu_recently_closed">Iccaren imedlen melmi kan</string>
+    <!-- Text shown in the menu to view tab settings -->
+    <string name="tab_tray_menu_tab_settings">Iɣewwaren n yiccer</string>
     <!-- Text shown in the menu for closing all tabs -->
     <string name="tab_tray_menu_item_close">Mdel akk iccaren</string>
     <!-- Shortcut action to open new tab -->
@@ -540,6 +593,8 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <!-- Text for the menu button to remove a top site -->
     <string name="remove_top_site">Kkes</string>
 
+    <!-- Text for the menu button to delete a top site from history -->
+    <string name="delete_from_history">Kkes seg umazray</string>
     <!-- Postfix for private WebApp titles, placeholder is replaced with app name -->
     <string name="pwa_site_controls_title_private">%1$s (askar uslig)</string>
 
@@ -748,10 +803,8 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <string name="collections_header">Tigrummiwin</string>
     <!-- Content description (not visible, for screen readers etc.): Opens the collection menu when pressed -->
     <string name="collection_menu_button_content_description">Umuɣ n tegrumma</string>
-    <!-- No Open Tabs Message Header -->
-    <string name="no_collections_header1">Sdukkel-d akk tiɣawsiwin i yesεan azal ɣur-k/m</string>
     <!-- Label to describe what collections are to a new user without any collections -->
-    <string name="no_collections_description1">Segrew akk akken inadiyen, ismal d waccaren yemṣadan akken ad yishil unekcum ɣer-sen mbeεd.</string>
+    <string name="no_collections_description2">Lqeḍ tiɣawsiwin i yesεan aẓal ɣur-k·m.\n Semlilil akk inadiyen ittcabin, ismal, d iccaren i unekcum arurad ticki.</string>
     <!-- Title for the "select tabs" step of the collection creator -->
     <string name="create_collection_select_tabs">Fren iccaren</string>
     <!-- Title for the "select collection" step of the collection creator -->
@@ -1000,14 +1053,10 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <string name="onboarding_whats_new_description">Tesεiḍ asteqsi ɣef %s ittwasinflen? Tebɣiḍ ad tezreḍ acu ibeddlen?</string>
     <!-- text for underlined clickable link that is part of "what's new" onboarding card description that links to an FAQ -->
     <string name="onboarding_whats_new_description_linktext">Awi-d tiririyen da</string>
-    <!-- text for the firefox account onboarding card header -->
-    <string name="onboarding_firefox_account_header">Faṛes tagnit seg %s.</string>
+    <!-- text for the Firefox account onboarding sign in card header -->
+    <string name="onboarding_account_sign_in_header">Bdu amtawi n ticraḍ, awalen uffiren, akked waṭas-nniḍen s umiḍan n Firefox.</string>
     <!-- Text for the button to learn more about signing in to your Firefox account -->
     <string name="onboarding_manual_sign_in_learn_more">Issin ugar</string>
-    <!-- text for the firefox account onboarding card header when we detect you're already signed in to
-        another Firefox browser. (The word `Firefox` should not be translated)
-        The first parameter is the email of the detected user's account -->
-    <string name="onboarding_firefox_account_auto_signin_header_2">Aql-ak teqqneḍ s %s ɣef yiminig-nniḍen Firefox s wugur-a. Tenɣiḍ ad teqqneḍ s umiḍan-a?</string>
     <!-- text for the button to confirm automatic sign-in -->
     <string name="onboarding_firefox_account_auto_signin_confirm">Ih, qqen-iyi</string>
     <!-- text for the automatic sign-in button while signing in is in process -->
@@ -1253,9 +1302,6 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <!-- Placeholder text for the TextView in the Add to Homescreen dialog -->
     <string name="add_to_homescreen_text_placeholder">Isem n unegzum</string>
 
-    <!-- Describes the add to homescreen functionality -->
-    <string name="add_to_homescreen_description">Adtizmireḍ s tifses ad ternuḍ asmel-a web ɣer ugdil agejdan n tiliɣri-ik akken ad tesɛuḍ anekcum askudan daɣen ad tinigeḍ s zreb s termit icuban asnas.</string>
-
     <!-- Preference for managing the settings for logins and passwords in Fenix -->
     <string name="preferences_passwords_logins_and_passwords">Inekcam d wawalen uffiren</string>
     <!-- Preference for managing the saving of logins and passwords in Fenix -->
@@ -1324,6 +1370,8 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <string name="logins_site_copied">Asmel yenɣel ɣef aus</string>
     <!-- Content Description (for screenreaders etc) read for the button to copy a password in logins-->
     <string name="saved_logins_copy_password">Nɣel awal uffir</string>
+    <!-- Content Description (for screenreaders etc) read for the button to clear a password while editing a login-->
+    <string name="saved_logins_clear_password">Sfeḍ awal uffir</string>
     <!-- Content Description (for screenreaders etc) read for the button to copy a username in logins -->
     <string name="saved_login_copy_username">Nɣel isem n useqdac</string>
     <!-- Content Description (for screenreaders etc) read for the button to copy a site in logins -->
@@ -1484,7 +1532,7 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <string name="saved_login_duplicate">Anekcam s yisem-agi n useqdac yella yakan</string>
 
     <!-- Synced Tabs -->
-   <!-- Text displayed to ask user to connect another device as no devices found with account -->
+    <!-- Text displayed to ask user to connect another device as no devices found with account -->
     <string name="synced_tabs_connect_another_device">Qqen ibenk-nniḍen.</string>
     <!-- Text displayed asking user to re-authenticate -->
     <string name="synced_tabs_reauth">Ma ulac aɣilif, ales asesteb.</string>
@@ -1504,9 +1552,26 @@ Tiktiwin tigejdanin yuzzlen ur nṣeḥḥi ara
     <!-- Top Sites -->
     <!-- Title text displayed in the dialog when top sites limit is reached. -->
     <string name="top_sites_max_limit_title">Tewwḍeḍ ɣer talast n usmel</string>
-    <!-- Content description text displayed in the dialog when top sites limit is reached. -->
-    <string name="top_sites_max_limit_content">I tmerna n usmel afellay amaynut, kkes yiwen. Sit mliḥ ɣef usmel syen fren kkes.</string>
     <!-- Confirmation dialog button text when top sites limit is reached. -->
     <string name="top_sites_max_limit_confirmation_button">IH, awi-t-id</string>
+
+    <!-- Label for the show most visited sites preference -->
+    <string name="top_sites_toggle_top_frecent_sites">Sken-d ismal ittwarzan aṭas</string>
+
+    <!-- Content description for close button in collection placeholder. -->
+    <string name="remove_home_collection_placeholder_content_description">Kkes</string>
+
+    <!-- depcrecated: text for the firefox account onboarding card header
+    The first parameter is the name of the app (e.g. Firefox Preview) -->
+    <string name="onboarding_firefox_account_header">Awi %s amaynut akk.</string>
+
+    <!-- Deprecated: No Open Tabs Message Header -->
+    <string name="no_collections_header1">Lqeḍ tiɣawsiwin i tḥemmleḍ</string>
+    <!-- Deprecated: Label to describe what collections are to a new user without any collections -->
+    <string name="no_collections_description1">Segrew akk akken inadiyen, ismal d waccaren yemṣadan akken ad yishil unekcum ɣer-sen mbeεd.</string>
+    <!-- Deprecated: text for the firefox account onboarding card header when we detect you're already signed in to -->
+    <string name="onboarding_firefox_account_auto_signin_header_2">Aql-ak teqqneḍ s %s ɣef yiminig-nniḍen Firefox s wugur-a. Tenɣiḍ ad teqqneḍ s umiḍan-a?</string>
+    <!-- Deprecated: Describes the add to homescreen functionality -->
+    <string name="add_to_homescreen_description">Adtizmireḍ s tifses ad ternuḍ asmel-a web ɣer ugdil agejdan n tiliɣri-ik akken ad tesɛuḍ anekcum askudan daɣen ad tinigeḍ s zreb s termit icuban asnas.</string>
 
     </resources>

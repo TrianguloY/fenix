@@ -4,13 +4,17 @@
 
 package org.mozilla.fenix.settings.deletebrowsingdata
 
+import io.mockk.coVerify
 import io.mockk.mockk
+import io.mockk.spyk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope.coroutineContext
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
+import mozilla.components.browser.icons.BrowserIcons
+import mozilla.components.browser.state.action.RecentlyClosedAction
+import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.storage.HistoryStorage
 import mozilla.components.feature.tabs.TabsUseCases
@@ -29,6 +33,8 @@ class DefaultDeleteBrowsingDataControllerTest {
     private var removeAllTabs: TabsUseCases.RemoveAllTabsUseCase = mockk(relaxed = true)
     private var historyStorage: HistoryStorage = mockk(relaxed = true)
     private var permissionStorage: PermissionStorage = mockk(relaxed = true)
+    private var store: BrowserStore = mockk(relaxed = true)
+    private var iconsStorage: BrowserIcons = mockk(relaxed = true)
     private val engine: Engine = mockk(relaxed = true)
     private lateinit var controller: DefaultDeleteBrowsingDataController
 
@@ -37,7 +43,9 @@ class DefaultDeleteBrowsingDataControllerTest {
         controller = DefaultDeleteBrowsingDataController(
             removeAllTabs = removeAllTabs,
             historyStorage = historyStorage,
+            store = store,
             permissionStorage = permissionStorage,
+            iconsStorage = iconsStorage,
             engine = engine,
             coroutineContext = coroutineContext
         )
@@ -55,12 +63,15 @@ class DefaultDeleteBrowsingDataControllerTest {
 
     @Test
     fun deleteBrowsingData() = runBlockingTest {
+        controller = spyk(controller)
         controller.deleteBrowsingData()
 
-        verify {
+        coVerify {
             engine.clearData(Engine.BrowsingData.select(Engine.BrowsingData.DOM_STORAGES))
+            historyStorage.deleteEverything()
+            store.dispatch(RecentlyClosedAction.RemoveAllClosedTabAction)
+            iconsStorage.clear()
         }
-        verify { launch { historyStorage.deleteEverything() } }
     }
 
     @Test
@@ -91,7 +102,7 @@ class DefaultDeleteBrowsingDataControllerTest {
     fun deleteSitePermissions() = runBlockingTest {
         controller.deleteSitePermissions()
 
-        verify {
+        coVerify {
             engine.clearData(Engine.BrowsingData.select(Engine.BrowsingData.ALL_SITE_SETTINGS))
             permissionStorage.deleteAllSitePermissions()
         }
