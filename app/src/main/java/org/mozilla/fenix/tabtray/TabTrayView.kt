@@ -21,6 +21,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.extensions.LayoutContainer
@@ -548,6 +549,15 @@ class TabTrayView(
                 syncedTabsController.adapter.itemCount
 
             layoutManager?.scrollToPosition(recyclerViewIndex)
+
+            // scroll half an item once
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    removeOnScrollListener(this)
+                    val height = layoutManager?.findViewByPosition(selectedBrowserTabIndex)?.layoutParams?.height ?: 0
+                    scrollBy(0, -height / 2)
+                }
+            })
         }
     }
 
